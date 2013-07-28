@@ -3,7 +3,7 @@ perceptron <- function(data,labels,eta,nIter){
   # eta is the learning rate
   # the perceptron finds a hyperplane that achieves linear separation between cases
   # if such a one exists
-  # returns a binary vector of predictions
+  # returns the weight vector learned after a specified number of iterations
   
   d = length(data[1,]) # dimensionality
   N = length(data[,1]) # number of training samples
@@ -14,7 +14,7 @@ perceptron <- function(data,labels,eta,nIter){
   
   weights = rep(0,d)
   
-  # Learning rule
+  # Perceptron functions
   
   f <- function(x,weights){
     y <- x %*% weights
@@ -36,6 +36,8 @@ perceptron <- function(data,labels,eta,nIter){
   }
   cat("Errors before weight update: ", errcount, "\n")
   ############
+  
+  # Learning starts
   
   for(x in 1:nIter){
     for(n in 1:N){
